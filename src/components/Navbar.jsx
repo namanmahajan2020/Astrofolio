@@ -27,7 +27,7 @@ export const Navbar = () => {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        Portfolio
+        Astrofolio
       </motion.div>
 
       <motion.ul
@@ -36,26 +36,14 @@ export const Navbar = () => {
         initial="initial"
         animate="animate"
       >
-        <motion.li
-          variants={fadeInUp}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <a href="#home"> Home</a>
+        <motion.li variants={fadeInUp} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+          <a href="#home">Home</a>
         </motion.li>
-        <motion.li
-          variants={fadeInUp}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <a href="#projects"> Projects</a>
+        <motion.li variants={fadeInUp} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+          <a href="#projects">Projects</a>
         </motion.li>
-        <motion.li
-          variants={fadeInUp}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <a href="#contact"> Contact</a>
+        <motion.li variants={fadeInUp} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
+          <a href="#contact">Contact</a>
         </motion.li>
       </motion.ul>
     </motion.nav>

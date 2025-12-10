@@ -63,13 +63,16 @@ export const Hero = () => {
               View My Work
             </motion.a>
             <motion.a
-              href="#contact"
+              href="https://drive.google.com/file/d/1KQt1hhpVfylAM8a_HNqdDcTwdAGuTbOC/view?usp=sharing"
               className="cta-secondary"
+              target="_blank"
+              rel="noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Contact Me
+              My Resume
             </motion.a>
+
           </motion.div>
           <motion.div className="social-links" variants={staggerContainer}>
             <motion.a href="https://github.com/namanmahajan2020" target="_blank">

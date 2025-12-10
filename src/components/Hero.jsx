@@ -44,7 +44,7 @@ export const Hero = () => {
           </motion.h1>
           <motion.h2 className="hero-subtitle" variants={fadeInUp}>
             {" "}
-            Creative Developer & Designer
+            Creative Developer & UI Enthusiast
           </motion.h2>
           <motion.p className="hero-description" variants={fadeInUp}>
             I craft beautiful digital experiences that combine stunning design
@@ -63,7 +63,7 @@ export const Hero = () => {
               View My Work
             </motion.a>
             <motion.a
-              href="#contacts"
+              href="#contact"
               className="cta-secondary"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -105,22 +105,24 @@ export const Hero = () => {
               style={vscDarkPlus}
             >
               {`const aboutMe: DeveloperProfile = {
-  codename: "PedroTech",
-  origin: "🌍 Somewhere between a coffee shop and a terminal",
+  codename: "N4M4N.EXE",
+  origin: "🚀 Chennai • between a hostel room and VS Code",
   role: "Fullstack Web Sorcerer",
   stack: {
-    languages: ["JavaScript", "TypeScript", "SQL"],
-    frameworks: ["React", "Next.js", "TailwindCSS", "Supabase"],
+    languages: ["JavaScript", "TypeScript", "C++", "SQL"],
+    frameworks: ["React", "Next.js", "Node.js", "Express", "TailwindCSS"],
+    tools: ["Vite", "Git", "Figma", "MongoDB", "Postman"],
   },
   traits: [
-    "pixel-perfectionist",
-    "API whisperer",
-    "dark mode advocate",
-    "terminal aesthetic enthusiast",
+    "UI polish addict",
+    "loves turning ideas into real projects",
+    "fixes bugs created by past self😭",
+    "Googles error messages like a pro",
+    "mixes clean design with practical features"
   ],
   missionStatement:
-    "Turning ideas into interfaces and bugs into feature",
-  availability: "Available for hire",
+    "Turning ideas into interfaces and bugs into feature⚡",
+  availability: "Open for internships and cool side projects ✨",
 };`}
             </SyntaxHighlighter>
           </div>

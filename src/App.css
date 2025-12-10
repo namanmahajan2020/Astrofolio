@@ -98,21 +98,19 @@ body {
   z-index: 1;
   background: transparent; /* important: let stars show through */
   opacity: 0;
-  transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .app.loaded {
   opacity: 1;
-  transform: translateY(0);
 }
 
 /* ============= NAVBAR ============= */
 .navbar {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
+  position: fixed ;
+  top: 0;
+  left: 0;
+  right: 0 ;
 
   display: flex;
   justify-content: space-between;
@@ -128,7 +126,7 @@ body {
   border-bottom: 1px solid rgba(148, 163, 184, 0.25);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 
-  z-index: 9999 !important; /* always above everything */
+  z-index: 9999;
 }
 
 
@@ -177,7 +175,7 @@ body {
 /* ============= HERO SECTION ============= */
 
 .hero {
-  padding-top: 120px !important;
+  padding-top: 120px;
 
   min-height: 100vh;
   /* remove big solid gradient – make transparent so stars show */

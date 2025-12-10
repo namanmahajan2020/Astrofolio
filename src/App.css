@@ -657,9 +657,59 @@ body {
 /* ============= FOOTER ============= */
 
 .footer {
+  width: 100%;
+  padding: 0.8rem 0;        /* thinner footer */
   text-align: center;
-  padding: 2rem;
-  background: transparent; /* no solid strip at bottom */
-  color: var(--text-color);
-  border-top: 1px solid var(--card-border);
+  position: relative;
+
+  background: rgba(15, 23, 42, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow: 0 -1px 6px rgba(255, 255, 255, 0.3);
+
+  z-index: 10;
+  overflow: hidden;
+}
+
+/* thin neon beam at the bottom */
+.footer::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -50%;
+  width: 200%;
+  height: 1.5px; /* thin neon line */
+  background: linear-gradient(
+    90deg,
+    rgba(236, 72, 153, 0),
+    rgba(236, 72, 153, 1),
+    rgba(59, 130, 246, 1),
+    rgba(56, 189, 248, 0)
+  );
+  animation: slideBeam 4.5s linear infinite;
+  opacity: 0.9;
+}
+
+/* text styling */
+.footer p {
+  position: relative;
+  margin: 0;
+  font-size: 0.85rem; /* slightly smaller to match thin footer */
+  letter-spacing: 0.08em;
+  color: #e5e7eb;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.55);
+}
+
+/* glowing status dot */
+.footer p::after {
+  content: "";
+  margin-left: 0.6rem;
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 999px;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
+  animation: pulseDot 1.4s ease-in-out infinite;
 }

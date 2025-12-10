@@ -49,14 +49,19 @@ export const Projects = () => {
             style={{ backgroundImage: "url('/projects/ai-saas.png')" }}
             whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
           />
-          <h3> AI SaaS Platform</h3>
+          <h3> Feeding Futures</h3>
           <p>
-            A modern SaaS platform built with Next.js and OpenAI integration,
-            featuring real-time AI-powered content generation and analytics.
+            A Zero-Hunger initiative app that manages leftover food from messes,
+            offices, and events, while coordinating NGOs to distribute food to
+            people in need. Includes donation workflow and analytics.
           </p>
           <div className="project-tech">
-            <span>Next.js</span>
-            <span>OpenAI</span>
+            <span>Node.js</span>
+            <span>JavaScript</span>
+            <span>React</span>
+            <span>Node.js</span>
+            <span>Express</span>
+            <span>MongoDB</span>
             <span>TailwindCSS</span>
           </div>
         </motion.div>
@@ -74,14 +79,20 @@ export const Projects = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           />
-          <h3>Social Media Dashboard</h3>
+          <h3>Famazon</h3>
           <p>
-            A comprehensive social media management dashboard with analytics,
-            scheduling, and engagement tracking features.
+            An e-commerce platform that helps small shopkeepers
+             replace WhatsApp status selling with a proper online store,
+              offering product browsing, secure checkout, and an admin panel to
+               manage orders and shop details with ease.
           </p>
           <div className="project-tech">
             <span>React</span>
             <span>Node.js</span>
+            <span>JavaScript</span>
+            <span>Express</span>
+            <span>TailwindCSS</span>
+            <span>Razorpay</span>
             <span>MongoDB</span>
           </div>
         </motion.div>
@@ -99,15 +110,20 @@ export const Projects = () => {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.2 }}
           />
-          <h3>Productivity Timer</h3>
+          <h3>Buy Me A Chai</h3>
           <p>
-            A sleek productivity timer application with customizable work
-            sessions, statistics tracking, and dark mode support.
+            A creator support platform where users can send small payments via Razorpay, 
+            leave messages, and see top supporters highlighted on the page, all in a clean 
+            and simple interface.
+
           </p>
           <div className="project-tech">
+            <span>Next.js</span>
             <span>React</span>
-            <span>TypeScript</span>
+            <span>JavaScript</span>
+            <span>MongoDB</span>
             <span>TailwindCSS</span>
+            <span>Razorpay</span>
           </div>
         </motion.div>
       </motion.div>

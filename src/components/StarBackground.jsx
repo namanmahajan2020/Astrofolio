@@ -7,6 +7,7 @@ export const StarBackground = () => {
   const [stars, setStars] = useState([]);
   const [meteors, setMeteors] = useState([]);
   const intervalRef = useRef(null);
+  const initStampRef = useRef(Date.now()); // stable stamp to build stable ids
 
   useEffect(() => {
     generateStars();
@@ -24,6 +25,7 @@ export const StarBackground = () => {
       window.removeEventListener("resize", handleResize);
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const generateStars = () => {
@@ -35,14 +37,37 @@ export const StarBackground = () => {
     for (let i = 0; i < numberOfStars; i++) {
       const x = Number((Math.random() * 100).toFixed(2));
       const y = Number((Math.random() * 100).toFixed(2));
+
+      // compute and store all random values here so they don't change on re-render
+      const size = +(Math.random() * 3 + 1).toFixed(2);
+      const opacity = +(Math.random() * 0.5 + 0.45).toFixed(3);
+      const animationDuration = +(Math.random() * 4 + 2).toFixed(2);
+      const showDelay = +(Math.random() * 6).toFixed(2);
+
+      // orbit / visual params (precomputed)
+      const rx = `${Math.max(8, 60 + Math.random() * 600).toFixed(2)}px`;
+      const ry = `${Math.max(4, 20 + Math.random() * 300).toFixed(2)}px`;
+      const thetaDeg = `${(Math.random() * 360).toFixed(2)}deg`;
+      const orbitMod = (0.9 + Math.random() * 0.3).toFixed(3);
+      const blinkDur = `${(8 + Math.random() * 22).toFixed(2)}s`;
+      const blinkDelay = `${(Math.random() * 20).toFixed(2)}s`;
+      const depth = (0.25 + Math.random() * 0.75).toFixed(3);
+
       newStars.push({
-        id: `s-${i}-${Date.now()}`,
-        size: Math.random() * 3 + 1,
+        id: `s-${i}-${initStampRef.current}`, // stable id while component lives
+        size,
         x,
         y,
-        opacity: Math.random() * 0.5 + 0.45,
-        animationDuration: Math.random() * 4 + 2,
-        showDelay: Math.random() * 6,
+        opacity,
+        animationDuration,
+        showDelay,
+        rx,
+        ry,
+        thetaDeg,
+        orbitMod,
+        blinkDur,
+        blinkDelay,
+        depth,
       });
     }
     setStars(newStars);
@@ -69,7 +94,7 @@ export const StarBackground = () => {
       ) + "px";
 
     return {
-      // unique id -> includes timestamp to force remount
+      // unique id -> includes timestamp to force remount when regenerating meteors
       id: `m-${idx}-${Date.now()}-${Math.round(Math.random() * 1e6)}`,
       size,
       x: startX,
@@ -122,13 +147,13 @@ export const StarBackground = () => {
               opacity: s.opacity,
               animationDuration: s.animationDuration + "s",
               animationDelay: s.showDelay + "s",
-              ["--rx"]: `${Math.max(8, 60 + Math.random() * 600)}px`, // simplified orbit radii
-              ["--ry"]: `${Math.max(4, 20 + Math.random() * 300)}px`,
-              ["--theta-deg"]: `${(Math.random() * 360).toFixed(2)}deg`,
-              ["--orbit-mod"]: (0.9 + Math.random() * 0.3).toFixed(3),
-              ["--blink-dur"]: `${(8 + Math.random() * 22).toFixed(2)}s`,
-              ["--blink-delay"]: `${(Math.random() * 20).toFixed(2)}s`,
-              ["--depth"]: (0.25 + Math.random() * 0.75).toFixed(3),
+              ["--rx"]: s.rx,
+              ["--ry"]: s.ry,
+              ["--theta-deg"]: s.thetaDeg,
+              ["--orbit-mod"]: s.orbitMod,
+              ["--blink-dur"]: s.blinkDur,
+              ["--blink-delay"]: s.blinkDelay,
+              ["--depth"]: s.depth,
             }}
           />
         ))}

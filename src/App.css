@@ -39,45 +39,70 @@ body {
   pointer-events: none;
   background: radial-gradient(circle at top, #1e1b4b 0, #020617 55%, #000 100%);
   background-image:
-    radial-gradient(900px 450px at 12% 18%, rgba(90,60,160,0.10), transparent 12%),
-    radial-gradient(800px 420px at 82% 72%, rgba(20,45,80,0.09), transparent 10%),
-    linear-gradient(180deg, rgba(4,8,20,1), rgba(1,3,8,1));
+    radial-gradient(900px 450px at 12% 18%, rgba(90, 60, 160, 0.10), transparent 12%),
+    radial-gradient(800px 420px at 82% 72%, rgba(20, 45, 80, 0.09), transparent 10%),
+    linear-gradient(180deg, rgba(4, 8, 20, 1), rgba(1, 3, 8, 1));
   background-blend-mode: screen, screen, normal;
   background-size: 240% 190%, 200% 180%, cover;
   will-change: background-position, transform;
 }
+
 .star-background.cinematic {
   animation: cinematicSky 160s linear infinite;
 }
+
 .star-background.cinematic::after {
   content: "";
   position: absolute;
   inset: -10%;
   pointer-events: none;
   background:
-    radial-gradient(1400px 700px at 30% 20%, rgba(255,255,255,0.02), transparent 8%),
-    radial-gradient(1000px 500px at 70% 75%, rgba(180,200,255,0.01), transparent 5%);
+    radial-gradient(1400px 700px at 30% 20%, rgba(255, 255, 255, 0.02), transparent 8%),
+    radial-gradient(1000px 500px at 70% 75%, rgba(180, 200, 255, 0.01), transparent 5%);
   background-size: 260% 200%, 220% 220%;
   z-index: 0;
   animation: cinematicSkyAlt 220s linear infinite reverse;
   mix-blend-mode: screen;
   opacity: 0.95;
 }
+
 @keyframes cinematicSky {
-  0% { background-position: 0% 0%, 0% 0%, 50% 50%; transform: scale(1); }
-  50% { background-position: 12% 8%, 8% 18%, 50% 50%; transform: scale(1.002); }
-  100% { background-position: 0% 0%, 0% 0%, 50% 50%; transform: scale(1); }
+  0% {
+    background-position: 0% 0%, 0% 0%, 50% 50%;
+    transform: scale(1);
+  }
+
+  50% {
+    background-position: 12% 8%, 8% 18%, 50% 50%;
+    transform: scale(1.002);
+  }
+
+  100% {
+    background-position: 0% 0%, 0% 0%, 50% 50%;
+    transform: scale(1);
+  }
 }
+
 @keyframes cinematicSkyAlt {
-  0% { background-position: 0% 0%, 0% 0%; }
-  50% { background-position: 18% 6%, 8% 22%; }
-  100% { background-position: 0% 0%, 0% 0%; }
+  0% {
+    background-position: 0% 0%, 0% 0%;
+  }
+
+  50% {
+    background-position: 18% 6%, 8% 22%;
+  }
+
+  100% {
+    background-position: 0% 0%, 0% 0%;
+  }
 }
 
 /* ---------- rotating orbit container (global rotation) ---------- */
 :root {
-  --sky-rotation-seconds: 120s; /* tune this for speed */
+  --sky-rotation-seconds: 120s;
+  /* tune this for speed */
 }
+
 .star-orbit {
   position: absolute;
   left: 50%;
@@ -92,8 +117,13 @@ body {
 
 /* global rotate keyframes */
 @keyframes skyRotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ---------- stars: elliptical orbit + continuous blink + pulse ---------- */
@@ -121,21 +151,16 @@ body {
   transform: rotate(var(--theta-deg)) translateX(var(--rx)) translateY(var(--ry)) rotate(calc(-1 * var(--theta-deg)));
 }
 
-/* tiny per-star local orbit variation (slow) to avoid perfectly locked motion */
-.orbiting-star::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  animation: localOrbit calc(var(--sky-rotation-seconds) * var(--orbit-mod, 1)) linear infinite;
-  transform-origin: center;
-  background: transparent;
-  will-change: transform;
-}
+
+
 @keyframes localOrbit {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* continuous long blink: opacity fade in-out loop controlled by per-star vars */
@@ -151,16 +176,35 @@ body {
 
 /* blink keyframes: 0 -> visible peak -> 0 (smooth) */
 @keyframes starBlink {
-  0% { opacity: 0; }
-  10% { opacity: 0.85; }
-  50% { opacity: 1; }
-  90% { opacity: 0.85; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.85;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0.85;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 /* small depth-based visual tweaks (nearer = slightly brighter) */
-.orbiting-star[style*="--depth: 0.2"] { filter: blur(0.9px) saturate(.95); }
-.orbiting-star[style*="--depth: 1"]   { filter: blur(0px) saturate(1.05); }
+.orbiting-star[style*="--depth: 0.2"] {
+  filter: blur(0.9px) saturate(.95);
+}
+
+.orbiting-star[style*="--depth: 1"] {
+  filter: blur(0px) saturate(1.05);
+}
 
 /* starPulse (scale flicker kept) */
 @keyframes starPulse {
@@ -168,6 +212,7 @@ body {
     transform: scale(0.92) rotate(var(--theta-deg)) translateX(var(--rx)) translateY(var(--ry)) rotate(calc(-1 * var(--theta-deg)));
     box-shadow: 0 0 4px rgba(255, 255, 255, 0.35);
   }
+
   100% {
     transform: scale(1.3) rotate(var(--theta-deg)) translateX(var(--rx)) translateY(var(--ry)) rotate(calc(-1 * var(--theta-deg)));
     box-shadow: 0 0 10px rgba(255, 255, 255, 1);
@@ -181,13 +226,11 @@ body {
   border-radius: 999px;
 
   /* ⭐ Ultra-thin tail */
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 0.7) 10%,
-    rgba(56, 189, 248, 0.4) 40%,
-    rgba(56, 189, 248, 0.1) 100%
-  );
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.7) 10%,
+      rgba(56, 189, 248, 0.4) 40%,
+      rgba(56, 189, 248, 0.1) 100%);
 
   opacity: 1;
   transform: rotate(-40deg);
@@ -198,9 +241,7 @@ body {
   animation-fill-mode: backwards;
 
   /* ⭐ More glow + thin trail */
-  filter: drop-shadow(0 0 6px #fff) 
-          drop-shadow(0 0 14px #38bdf8) 
-          blur(0.4px);
+  filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 14px #38bdf8) blur(0.4px);
 }
 
 /* ⭐ Super fast, thin comet style */
@@ -210,12 +251,12 @@ body {
     opacity: 0;
     filter: drop-shadow(0 0 0px #fff);
   }
+
   7% {
     opacity: 1;
-    filter: drop-shadow(0 0 12px #fff)
-            drop-shadow(0 0 26px #38bdf8)
-            blur(0.7px);
+    filter: drop-shadow(0 0 12px #fff) drop-shadow(0 0 26px #38bdf8) blur(0.7px);
   }
+
   100% {
     transform: translate3d(-1000px, 750px, 0) rotate(-40deg) scaleX(0.2);
     opacity: 0;
@@ -225,13 +266,14 @@ body {
 
 /* ---------- reduce motion ---------- */
 @media (prefers-reduced-motion: reduce) {
+
   .star-orbit,
   .star-orbit::after,
   .orbiting-star,
   .orbiting-star::after {
-    animation: none !important;
-    transition: none !important;
-    opacity: 1 !important;
+    animation: none;
+    transition: none;
+    opacity: 1;
   }
 }
 
@@ -243,7 +285,8 @@ body {
   width: 100%;
   min-height: 100vh;
   z-index: 1;
-  background: transparent; /* important: let stars show through */
+  background: transparent;
+  /* important: let stars show through */
   opacity: 0;
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
@@ -254,10 +297,10 @@ body {
 
 /* ============= NAVBAR ============= */
 .navbar {
-  position: fixed ;
+  position: fixed;
   top: 0;
   left: 0;
-  right: 0 ;
+  right: 0;
 
   display: flex;
   justify-content: space-between;
@@ -445,12 +488,10 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent);
   transition: 0.5s;
 }
 
@@ -479,11 +520,9 @@ body {
   right: -2rem;
 
   /* glassmorphism */
-  background: linear-gradient(
-    135deg,
-    rgba(236, 72, 154, 0.116),
-    rgba(59, 131, 246, 0.127)
-  );
+  background: linear-gradient(135deg,
+      rgba(236, 72, 154, 0.116),
+      rgba(59, 131, 246, 0.127));
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 
@@ -563,7 +602,8 @@ body {
 
 .projects {
   padding: 6rem 5%;
-  background-color: transparent; /* no solid bg */
+  background-color: transparent;
+  /* no solid bg */
   position: relative;
 }
 
@@ -600,11 +640,9 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    135deg,
-    var(--gradient-start) 0%,
-    var(--gradient-end) 100%
-  );
+  background: linear-gradient(135deg,
+      var(--gradient-start) 0%,
+      var(--gradient-end) 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 0;
@@ -635,12 +673,10 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    45deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.15) 50%,
-    transparent 100%
-  );
+  background: linear-gradient(45deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.15) 50%,
+      transparent 100%);
   transform: translateX(-100%);
   transition: transform 0.6s ease;
 }
@@ -681,7 +717,8 @@ body {
 
 .contact {
   padding: 6rem 5%;
-  background: transparent; /* let stars show; form itself stays dark */
+  background: transparent;
+  /* let stars show; form itself stays dark */
   position: relative;
 }
 
@@ -692,12 +729,10 @@ body {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--accent-color),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      var(--accent-color),
+      transparent);
 }
 
 .contact h2 {
@@ -768,12 +803,10 @@ body {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent);
   transition: 0.5s;
 }
 
@@ -826,15 +859,13 @@ body {
   left: -50%;
   width: 200%;
   height: 1.5px;
-  background: linear-gradient(
-    90deg,
-    rgba(236, 72, 153, 0),
-    rgba(236, 72, 153, 1),
-    rgba(59, 130, 246, 1),
-    rgba(56, 189, 248, 0)
-  );
+  background: linear-gradient(90deg,
+      rgba(236, 72, 153, 0),
+      rgba(236, 72, 153, 1),
+      rgba(59, 130, 246, 1),
+      rgba(56, 189, 248, 0));
   animation: slideBeam 4.5s linear infinite,
-             blinkBeam 1.8s ease-in-out infinite;
+    blinkBeam 1.8s ease-in-out infinite;
   opacity: 0.9;
 }
 
@@ -863,10 +894,18 @@ body {
 
 /* NEW — blinking animation for the neon beam */
 @keyframes blinkBeam {
-  0%, 100% { opacity: 0.1; }
-  50% { opacity: 1; }
-  
+
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
 }
+
 /* glowing status dot */
 .footer p::after {
   content: "";
@@ -878,12 +917,21 @@ body {
   border-radius: 999px;
   box-shadow: 0 0 10px rgba(34, 197, 94, 0.9);
   animation: pulseDot 1.4s ease-in-out infinite,
-             blinkGreen 1.2s ease-in-out infinite;   /* added blinking */
+    blinkGreen 1.2s ease-in-out infinite;
+  /* added blinking */
 }
+
 /* NEW — blinking animation for the green dot */
 @keyframes blinkGreen {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 1;
+  }
 }
 
 /* container for buttons */
@@ -896,7 +944,8 @@ body {
   justify-content: flex-start;
 
   position: relative;
-  z-index: 5;        /* above card overlay */
+  z-index: 5;
+  /* above card overlay */
 }
 
 /* base button */
@@ -934,13 +983,11 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(244, 114, 182, 0.23),
-    rgba(56, 189, 248, 0.3),
-    transparent
-  );
+  background: linear-gradient(120deg,
+      transparent,
+      rgba(244, 114, 182, 0.23),
+      rgba(56, 189, 248, 0.3),
+      transparent);
   opacity: 0;
   transform: translateX(-40%);
   transition: opacity 0.25s ease, transform 0.4s ease;

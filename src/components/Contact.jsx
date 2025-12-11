@@ -90,14 +90,39 @@ export const Contact = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <motion.h2
-        variants={fadeInUp}
-        initial="initial"
-        animate="animate"
-        viewport={{ once: true }}
-      >
-        Get in Touch
-      </motion.h2>
+<motion.div
+  variants={fadeInUp}
+  initial="initial"
+  animate="animate"
+  className="flex flex-col items-center text-center"
+>
+  <h2
+    className="
+      text-5xl 
+      font-extrabold 
+      tracking-tight 
+      leading-[1] 
+      m-0 p-0 
+      text-white
+      drop-shadow-[0_0_15px_rgba(56,189,248,0.45)]
+    "
+  >
+    <span
+      className="
+        inline-block 
+        bg-gradient-to-r 
+        from-cyan-300/80 
+        to-blue-400/80 
+        bg-clip-text 
+        text-transparent
+      "
+    >
+      Get in Touch
+    </span>
+  </h2>
+</motion.div>
+
+
 
       <motion.div className="contact-content" variants={fadeInUp}>
         <motion.form className="contact-form" onSubmit={handleSubmit}>

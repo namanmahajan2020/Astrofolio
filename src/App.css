@@ -1027,3 +1027,38 @@ body {
   gap: 0.5rem;
   flex-wrap: wrap;
 }
+
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient-move {
+  animation: gradient-move 4s ease infinite;
+}
+
+
+.active-nav-link {
+  color: #f472b6 !important;
+  font-weight: 600;
+  transform: scale(1.12);
+  transition: all 0.25s ease;
+
+  pointer-events: none;
+  cursor: default !important;
+
+  position: relative;
+  display: inline-block;   /* ⭐ REQUIRED so underline can render */
+}
+
+.active-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;            /* distance below text */
+  width: 100%;
+  height: 2px;
+  background-color: #f472b6;  /* same pink */
+  border-radius: 4px;
+}
+

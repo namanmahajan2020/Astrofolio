@@ -24,14 +24,24 @@ export const Projects = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
     >
-      <motion.h2
-        variants={fadeInUp}
-        initial="initial"
-        whileInView="animate"
-        viewport={{ once: true }}
-      >
-        My Projects
-      </motion.h2>
+      
+<motion.h2
+  className="
+    text-5xl 
+    font-extrabold 
+    tracking-tight 
+    text-white
+    drop-shadow-[0_0_18px_rgba(147,51,234,0.55)]
+  "
+  variants={fadeInUp}
+  initial="initial"
+  whileInView="animate"
+  viewport={{ once: true }}
+>
+  My Projects
+</motion.h2>
+
+
 
       <motion.div
         className="project-grid"

@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 
+// id, size, x, y, opacity, animationDuration
+// id, size, x, y, delay, animationDuration
+
 export const StarBackground = () => {
   const [stars, setStars] = useState([]);
   const [meteors, setMeteors] = useState([]);
@@ -57,11 +60,11 @@ export const StarBackground = () => {
   };
 
   return (
-    <div className="star-background">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {stars.map((star) => (
         <div
           key={star.id}
-          className="star"
+          className="star animate-pulse-subtle"
           style={{
             width: star.size + "px",
             height: star.size + "px",
@@ -76,13 +79,13 @@ export const StarBackground = () => {
       {meteors.map((meteor) => (
         <div
           key={meteor.id}
-          className="meteor"
+          className="meteor animate-meteor"
           style={{
             width: meteor.size * 50 + "px",
             height: meteor.size * 2 + "px",
             left: meteor.x + "%",
             top: meteor.y + "%",
-            animationDelay: meteor.delay + "s",
+            animationDelay: meteor.delay,
             animationDuration: meteor.animationDuration + "s",
           }}
         />

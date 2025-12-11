@@ -51,17 +51,54 @@ body {
 }
 
 /* meteors */
+/* meteors */
 .meteor {
   position: absolute;
   border-radius: 999px;
-  background: linear-gradient(90deg, #f9a8ff, #38bdf8);
-  opacity: 0.9;
-  transform: rotate(-30deg);
+
+  /* ⭐ Ultra-thin tail */
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.7) 10%,
+    rgba(56, 189, 248, 0.4) 40%,
+    rgba(56, 189, 248, 0.1) 100%
+  );
+
+  opacity: 1;
+  transform: rotate(-40deg);
+
   animation-name: meteorMove;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  animation-fill-mode: backwards; /* ⭐ FIXES INITIAL LAG */
+  animation-fill-mode: backwards;
+
+  /* ⭐ More glow + thin trail */
+  filter: drop-shadow(0 0 6px #fff) 
+          drop-shadow(0 0 14px #38bdf8) 
+          blur(0.4px);
 }
+
+/* ⭐ Super fast, thin comet style */
+@keyframes meteorMove {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-40deg) scaleX(0.4);
+    opacity: 0;
+    filter: drop-shadow(0 0 0px #fff);
+  }
+  7% {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px #fff)
+            drop-shadow(0 0 26px #38bdf8)
+            blur(0.7px);
+  }
+  100% {
+    transform: translate3d(-1000px, 750px, 0) rotate(-40deg) scaleX(0.2);
+    opacity: 0;
+    filter: drop-shadow(0 0 0px #fff);
+  }
+}
+
 
 /* subtle twinkle */
 @keyframes starPulse {
@@ -75,20 +112,6 @@ body {
   }
 }
 
-/* meteor streak */
-@keyframes meteorMove {
-  0% {
-    transform: translate3d(0, 0, 0) rotate(-30deg);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  100% {
-    transform: translate3d(-600px, 600px, 0) rotate(-30deg);
-    opacity: 0;
-  }
-}
 
 /* ============= APP SHELL ============= */
 

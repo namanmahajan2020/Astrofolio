@@ -39,15 +39,29 @@ body {
   background: radial-gradient(circle at top, #1e1b4b 0, #020617 55%, #000 100%);
 }
 
-/* individual stars */
 .star {
   position: absolute;
   border-radius: 999px;
   background: #fff;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-  animation-name: starPulse;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+
+  /* ⭐ Faster + random blink per star */
+  animation: starPulse 0.8s infinite alternate;
+  animation-timing-function: steps(2, end);
+}
+
+/* ⭐ Stronger, sharper flicker */
+@keyframes starPulse {
+  0% {
+    opacity: 0.2;
+    transform: scale(0.9);
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.4);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.3);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 1);
+  }
 }
 
 /* meteors */
